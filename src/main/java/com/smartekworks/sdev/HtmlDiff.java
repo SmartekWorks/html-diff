@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ResultDiff {
+public class HtmlDiff {
 	final static int BUFFER_SIZE = 4096;
 
 	public static void main(String[] args) throws Exception{
@@ -255,12 +255,13 @@ public class ResultDiff {
 			}
 		});
 
+		int caseIndex = 0;
 		for (String key : keyList) {
 			File caseTemplate = new File(templateFolder, "case" + System.getProperty("file.separator"));
 			File evTemplateFile = new File(caseTemplate, "evidences.html");
 			File opTemplateFile = new File(caseTemplate, "operation.html");
 
-			File caseFolder = new File(resultFolder, key + System.getProperty("file.separator"));
+			File caseFolder = new File(resultFolder, "" + caseIndex + System.getProperty("file.separator"));
 			FileUtils.forceMkdir(caseFolder);
 
 			ArrayList<HashMap<String, String>> operations = result.get(key);
@@ -312,18 +313,20 @@ public class ResultDiff {
 			FileUtils.writeStringToFile(evidencesFile, evTemplateHtml);
 
 			if (srcOnly) {
-				casesLinks = casesLinks + "<li><a href=\"" + key + "/evidences.html\" target=\"evidencesFrame\">" +
+				casesLinks = casesLinks + "<li><a href=\"" + caseIndex + "/evidences.html\" target=\"evidencesFrame\">" +
 						key + " (SRC Only)</a></li>"+ System.getProperty("line.separator");
 			} else if (dstOnly) {
-				casesLinks = casesLinks + "<li><a href=\"" + key + "/evidences.html\" target=\"evidencesFrame\">" +
+				casesLinks = casesLinks + "<li><a href=\"" + caseIndex + "/evidences.html\" target=\"evidencesFrame\">" +
 						key + " (DST Only)</a></li>"+ System.getProperty("line.separator");
 			} else if (different) {
-				casesLinks = casesLinks + "<li><a href=\"" + key + "/evidences.html\" target=\"evidencesFrame\">" +
+				casesLinks = casesLinks + "<li><a href=\"" + caseIndex + "/evidences.html\" target=\"evidencesFrame\">" +
 						key + "</a></li>"+ System.getProperty("line.separator");
 			} else {
-				casesLinks = casesLinks + "<li><a href=\"" + key + "/evidences.html\" class=\"muted\" target=\"evidencesFrame\">" +
+				casesLinks = casesLinks + "<li><a href=\"" + caseIndex + "/evidences.html\" class=\"muted\" target=\"evidencesFrame\">" +
 						key + " (No Differences)</a></li>"+ System.getProperty("line.separator");
 			}
+
+			caseIndex++;
 		}
 
 		String caTemplateHtml = FileUtils.readFileToString(caTemplateFile);

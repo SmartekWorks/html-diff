@@ -1,6 +1,6 @@
 ﻿Sample Command
 ==============
-java -jar -DsrcZip=S0001-001-1.zip -DdstZip=S0001-001-2.zip -DdomFilter=filters result-diff.jar
+java -jar -DsrcZip=S0001-001-1.zip -DdstZip=S0001-001-2.zip -DdomFilter=filters html-diff.jar
 
 Parameters
 ==========

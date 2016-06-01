@@ -1,4 +1,4 @@
 [
 	"input[type=hidden]", 
-	"input[type=text]"
+	"div.banner"
 ]

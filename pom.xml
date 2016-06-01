@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.smartekworks.sdev</groupId>
-  <artifactId>result-diff</artifactId>
+  <artifactId>html-diff</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>Result Diff Tool</name>
+  <name>HTML Diff Tool</name>
   <url>http://www.smartekworks.com</url>
 
   <properties>
@@ -67,7 +67,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>com.smartekworks.sdev.ResultDiff</mainClass>
+              <mainClass>com.smartekworks.sdev.HtmlDiff</mainClass>
             </manifest>
           </archive>
         </configuration>

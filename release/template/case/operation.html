@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Differences</title>
+    <meta charset="{CHARSET}">
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+	<script type="application/javascript" src="../prettydiff.js"></script>
+	<script type="text/javascript">
+		var mode = 2;
+		function diffView()
+		{
+			var args   = {
+				mode     : "diff",
+				source   : document.getElementById('srcHtml').value,
+				diff     : document.getElementById('dstHtml').value,
+				diffview : "inline",
+				lang     : "auto"
+			};
+			if (mode == 2) {
+				args.context = 5;
+				mode = 1;
+			} else {
+				mode = 2;
+			}
+			output = prettydiff(args);
+			document.getElementById('diffoutput').innerHTML = output[1];
+			document.getElementById('diffView').contentWindow.document.open();
+			document.getElementById('diffView').contentWindow.document.close();
+			document.getElementById('diffView').contentWindow.document.write(output[0]);
+		}
+	</script>
+</head>
+
+<body onload="diffView()" class="left">
+    <div class="indexContainer">
+        <h2>{OPERATION_CODE}</h2> <button onclick="diffView()">Change View Mode</button>
+    </div>
+    <div class="contentContainer">
+		<textarea rows="0" cols="0" style="display:none" id="srcHtml">{SRC_HTML}</textarea>
+		<textarea rows="0" cols="0" style="display:none" id="dstHtml">{DST_HTML}</textarea>
+		<div id="diffoutput"></div>
+		<iframe id="diffView" frameborder="0" height="600px" width="100%"></iframe>
+	</div>
+</body>
+</html>

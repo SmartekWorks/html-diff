@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Differences</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+	<script type="application/javascript" src="../prettydiff.js"></script>
+	<script type="text/javascript">
+		function diffView()
+		{
+			var args   = {
+				source: document.getElementById('srcHtml').value,
+				diff  : document.getElementById('dstHtml').value,
+				lang  : "auto"
+			};
+			output = prettydiff(args);
+			document.getElementById('diffoutput').innerHTML = output[1];
+			document.getElementById('diffView').contentWindow.document.write(output[0]);
+		}
+	</script>
+</head>
+
+<body class="left">
+<div class="indexContainer">
+	<h2>S00001-001-000</h2> <button>Change View Mode</button>
+</div>
+<div class="contentContainer">
+	<input type="hidden" id="srcHtml" value="{SRC_HTML}">
+	<input type="hidden" id="dstHtml" value="{DST_HTML}">
+	<div id="diffoutput"></div>
+	<iframe id="diffView" frameborder="0" height="600px" width="100%"></iframe>
+</div>
+</body>
+</html>
